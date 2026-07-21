@@ -1,0 +1,50 @@
+﻿<Window x:Class="fourCities.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:fourCities"
+        xmlns:controls="clr-namespace:fourCities.UserControls"
+        xmlns:vm="clr-namespace:fourCities.ViewModels"
+        mc:Ignorable="d"                  
+        Title="4 Cities BETA" Height="450" Width="800" Background="#262626">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Left: Hometown -->
+        <controls:HometownControl Grid.Column="0" Grid.Row="0">
+            <controls:HometownControl.DataContext>
+                <vm:HomeTimeControlViewModel />
+            </controls:HometownControl.DataContext>
+        </controls:HometownControl>
+
+        <!-- Top Right: City I -->
+        <controls:CityI Grid.Column="1" Grid.Row="0">
+            <controls:CityI.DataContext>
+                <vm:CityIControlViewModel />
+            </controls:CityI.DataContext>
+        </controls:CityI>
+
+        <!-- Bottom Left: City II -->
+        <controls:CityII Grid.Column="0" Grid.Row="1">
+            <controls:CityII.DataContext>
+                <vm:CityIIControlViewModel />
+            </controls:CityII.DataContext>
+        </controls:CityII>
+
+        <!-- Bottom Right: City III -->
+        <controls:CityIII Grid.Column="1" Grid.Row="1">
+            <controls:CityIII.DataContext>
+                <vm:CityIIIControlViewModel />
+            </controls:CityIII.DataContext>
+        </controls:CityIII>
+
+    </Grid>
+</Window>
