@@ -12,8 +12,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ComboBox Grid.Row="0" ItemsSource="{Binding Cities}" SelectedItem="{Binding SelectedCity, Mode=TwoWay}" Style="{StaticResource ModernComboBoxStyle}" ItemContainerStyle="{StaticResource ModernComboBoxItemStyle}" DisplayMemberPath="DisplayName" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Row="1" Content="{Binding CurrentTime}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="0" ItemsSource="{Binding Cities}" SelectedItem="{Binding SelectedCity, Mode=TwoWay}" Style="{StaticResource ModernComboBoxStyle}" ItemContainerStyle="{StaticResource ModernComboBoxItemStyle}" DisplayMemberPath="DisplayName" FontSize="{Binding ComboboxTextSize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="1" Content="{Binding CurrentTime}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding ClockSize}"/>
 
     </Grid>
 </UserControl>

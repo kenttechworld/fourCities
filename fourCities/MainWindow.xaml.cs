@@ -1,4 +1,5 @@
 ﻿using Dark.Net;
+using fourCities.Handlers;
 using System.Windows;
 
 namespace fourCities
@@ -10,6 +11,7 @@ namespace fourCities
     {
         public MainWindow()
         {
+            AppStartupHandler.StartupChecks();
             InitializeComponent();
             DarkNet.Instance.SetWindowThemeWpf(this, Theme.Dark);
         }

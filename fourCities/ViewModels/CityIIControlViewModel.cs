@@ -20,8 +20,16 @@ namespace fourCities.ViewModels
         [ObservableProperty]
         private string _currentTime = "00:00";
 
+        [ObservableProperty]
+        private int _comboboxTextSize = 1;
+
+        [ObservableProperty]
+        private int _clockSize = 1;
+
         public CityIIControlViewModel()
         {
+            ComboboxTextSize = TomlHandler.GetComboboxTextSizeSize();
+            ClockSize = TomlHandler.GetClockLabelSize();
             AddCitesToList();
 
             SetComboboxToDefault();

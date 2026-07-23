@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:fourCities.UserControls"
         xmlns:vm="clr-namespace:fourCities.ViewModels"
         mc:Ignorable="d"                  
-        Title="4 Cities BETA" Height="450" Width="800" Background="#262626">
+        Title="4 Cities BETA" Height="300" Width="500" Background="#262626">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

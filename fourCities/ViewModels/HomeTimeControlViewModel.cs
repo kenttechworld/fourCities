@@ -11,8 +11,16 @@ namespace fourCities.ViewModels
         [ObservableProperty]
         private string _currentTime = "00:00";
 
+        [ObservableProperty]
+        private int _labelSize = 1;
+
+        [ObservableProperty]
+        private int _clockSize = 1;
+
         public HomeTimeControlViewModel()
         {
+            LabelSize = TomlHandler.GetLabelSize();
+            ClockSize = TomlHandler.GetClockLabelSize();
             // Set up a timer to tick every 1 second
             _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _timer.Tick += Timer_Tick;
