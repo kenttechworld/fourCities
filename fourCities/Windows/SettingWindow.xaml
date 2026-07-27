@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:fourCities.UserControls"
         xmlns:vm="clr-namespace:fourCities.ViewModels"
         mc:Ignorable="d"
-        Title="SettingWindow" Height="450" Width="300" Background="#262626" >
+        Title="SettingWindow" Height="150" Width="300" Background="#262626" >
     <Grid>
         <controls:SettingsControl>
             <controls:SettingsControl.DataContext>

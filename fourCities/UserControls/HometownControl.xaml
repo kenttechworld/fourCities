@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="🛖" Style="{StaticResource HomeButton}" Command="{Binding OpenSettingsWindowCommand}"/> 
+            <Button Content="⚙️" Style="{StaticResource HomeButton}" Command="{Binding OpenSettingsWindowCommand}"/> 
             <Label Content="Home time" Foreground="Azure" FontSize="{Binding LabelSize}" VerticalContentAlignment="Center"/>
             
         </StackPanel>

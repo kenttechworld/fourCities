@@ -15,7 +15,7 @@
             <StackPanel Orientation="Vertical">
                 <Label Content="Set Clock Size" FontSize="20"/>
                 <TextBox Text="{Binding ClockSize, UpdateSourceTrigger=PropertyChanged}" />
-                <Button Content="Set" Command="{Binding SetNewClockSizeCommand}"/>
+                <Button Content="💾" Command="{Binding SetNewClockSizeCommand}" Style="{StaticResource HomeButton}"/>
             </StackPanel>
         </Border>
     </Grid>

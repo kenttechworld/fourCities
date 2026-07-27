@@ -304,4 +304,12 @@
         <Setter Property="Foreground" Value="Azure"/>
     </Style>
 
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="#333333"/>
+        <Setter Property="Foreground" Value="Azure"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Margin" Value="0,6,0,6"/>
+    </Style>
+
 </ResourceDictionary>
