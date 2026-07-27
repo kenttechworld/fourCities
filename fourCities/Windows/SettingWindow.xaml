@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:fourCities.Windows"
+        xmlns:controls="clr-namespace:fourCities.UserControls"
+        xmlns:vm="clr-namespace:fourCities.ViewModels"
         mc:Ignorable="d"
-        Title="SettingWindow" Height="450" Width="800">
+        Title="SettingWindow" Height="450" Width="300" Background="#262626" >
     <Grid>
-        
+        <controls:SettingsControl>
+            <controls:SettingsControl.DataContext>
+                <vm:SettingsWindowViewModel />
+            </controls:SettingsControl.DataContext>
+        </controls:SettingsControl>
     </Grid>
 </Window>

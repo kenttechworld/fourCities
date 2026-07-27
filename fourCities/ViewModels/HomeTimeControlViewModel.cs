@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using fourCities.Handlers;
 using fourCities.Windows;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace fourCities.ViewModels
@@ -34,7 +35,11 @@ namespace fourCities.ViewModels
         [RelayCommand]
         private void OpenSettingsWindow() 
         {
-            SettingWindow settingsWindow = new SettingWindow();
+            SettingWindow settingsWindow = new SettingWindow 
+            {
+                Owner = Application.Current.MainWindow,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            };
             settingsWindow.ShowDialog();
         }
 
