@@ -8,6 +8,12 @@
         xmlns:vm="clr-namespace:fourCities.ViewModels"
         mc:Ignorable="d"                  
         Title="4 Cities BETA" Height="300" Width="500" Background="#262626">
+
+    <!-- Initialize Master Orchestrator ViewModel as DataContext -->
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -19,32 +25,20 @@
         </Grid.RowDefinitions>
 
         <!-- Top Left: Hometown -->
-        <controls:HometownControl Grid.Column="0" Grid.Row="0">
-            <controls:HometownControl.DataContext>
-                <vm:HomeTimeControlViewModel />
-            </controls:HometownControl.DataContext>
-        </controls:HometownControl>
+        <controls:HometownControl Grid.Column="0" Grid.Row="0" 
+                                 DataContext="{Binding HometownVM}" />
 
         <!-- Top Right: City I -->
-        <controls:CityI Grid.Column="1" Grid.Row="0">
-            <controls:CityI.DataContext>
-                <vm:CityIControlViewModel />
-            </controls:CityI.DataContext>
-        </controls:CityI>
+        <controls:CityI Grid.Column="1" Grid.Row="0" 
+                        DataContext="{Binding CityIVM}" />
 
         <!-- Bottom Left: City II -->
-        <controls:CityII Grid.Column="0" Grid.Row="1">
-            <controls:CityII.DataContext>
-                <vm:CityIIControlViewModel />
-            </controls:CityII.DataContext>
-        </controls:CityII>
+        <controls:CityII Grid.Column="0" Grid.Row="1" 
+                         DataContext="{Binding CityIIVM}" />
 
         <!-- Bottom Right: City III -->
-        <controls:CityIII Grid.Column="1" Grid.Row="1">
-            <controls:CityIII.DataContext>
-                <vm:CityIIIControlViewModel />
-            </controls:CityIII.DataContext>
-        </controls:CityIII>
+        <controls:CityIII Grid.Column="1" Grid.Row="1" 
+                          DataContext="{Binding CityIIIVM}" />
 
     </Grid>
 </Window>

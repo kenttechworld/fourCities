@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using fourCities.Handlers;
+using fourCities.Messages;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +20,8 @@ namespace fourCities.ViewModels
         {
             if (int.TryParse(ClockSize, out int newSize)) {
                 TomlHandler.UpdateTomlField("ClockLabel", newSize);
+                // Broadcasts the new font size to all controls instantly
+                WeakReferenceMessenger.Default.Send(new ChangeFontSizeMessage(newSize));
             }
         }
     }
