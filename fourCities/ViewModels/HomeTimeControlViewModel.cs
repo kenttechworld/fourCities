@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using fourCities.Handlers;
+using fourCities.Windows;
 using System.Windows.Threading;
 
 namespace fourCities.ViewModels
@@ -27,6 +29,13 @@ namespace fourCities.ViewModels
             _timer.Start();
 
             RefreshTime();
+        }
+
+        [RelayCommand]
+        private void OpenSettingsWindow() 
+        {
+            SettingWindow settingsWindow = new SettingWindow();
+            settingsWindow.ShowDialog();
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
