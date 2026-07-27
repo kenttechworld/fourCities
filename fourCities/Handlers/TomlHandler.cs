@@ -30,5 +30,10 @@ namespace fourCities.Handlers
             int labeledSize = TomlModel.ReadTOMLfiels<int>("ComboboxTextSize");
             return labeledSize;
         }
+
+        public static void UpdateTomlField(string fieldToUpdate, int value)
+        {
+            TomlModel.UpdateTOMLFileFieldInt(fieldToUpdate, value);
+        }
     }
 }

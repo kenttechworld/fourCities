@@ -14,8 +14,8 @@
         <Border Grid.Column="0">
             <StackPanel Orientation="Vertical">
                 <Label Content="Set Clock Size" FontSize="20"/>
-                <TextBox />
-                <Button Content="Set" />
+                <TextBox Text="{Binding ClockSize, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Content="Set" Command="{Binding SetNewClockSizeCommand}"/>
             </StackPanel>
         </Border>
     </Grid>

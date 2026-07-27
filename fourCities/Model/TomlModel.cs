@@ -76,6 +76,24 @@ namespace fourCities.Model
             throw new NotSupportedException($"The type {typeof(T).Name} is not supported by this method.");
         }
 
+        public static void UpdateTOMLFileFieldInt(string fieldToUpdate, int newValue)
+        {
+            if (CheckIfTOMLFileExist())
+            {
+                LoadeConfigFile();
+
+                toml?[fieldToUpdate] = newValue;
+
+                // Save the changes back
+                using (StreamWriter writer = File.CreateText(tomlPath))
+                {
+                    toml?.WriteTo(writer);
+                    writer.Flush();
+                }
+
+            }
+        }
+
         private static void LoadeConfigFile()
         {
             // 1. Read the flat TOML file
