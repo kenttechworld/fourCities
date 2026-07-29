@@ -1,8 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using fourCities.Extensions;
 using fourCities.Handlers;
-using fourCities.Model;
-using System.Collections.ObjectModel;
 using System.Windows.Threading;
 
 namespace fourCities.ViewModels
@@ -10,30 +7,25 @@ namespace fourCities.ViewModels
     public partial class CityIIIControlViewModel : ObservableObject
     {
         private readonly DispatcherTimer _timer;
+        private readonly string timeZone = TomlHandler.ReadTomlField("TZ3");
 
         [ObservableProperty]
-        private ObservableCollection<CityItemObservableProperty.CityItem> _cities = new();
-
-        [ObservableProperty]
-        private CityItemObservableProperty.CityItem? _selectedCity;
+        private string _cityName;
 
         [ObservableProperty]
         private string _currentTime = "00:00";
 
         [ObservableProperty]
-        private int _comboboxTextSize = 1;
+        private int _clockSize = 1;
 
         [ObservableProperty]
-        private int _clockSize = 1;
+        private int _labelSize = 1;
 
         public CityIIIControlViewModel()
         {
-            ComboboxTextSize = TomlHandler.GetComboboxTextSizeSize();
-            ClockSize = TomlHandler.GetClockLabelSize(); 
-            AddCitesToList();
-
-            SetComboboxToDefault();
-
+            ClockSize = TomlHandler.GetClockLabelSize();
+            CityName = timeZone;
+            LabelSize = TomlHandler.GetLabelSize();
             // Set up a timer to tick every 1 second
             _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _timer.Tick += Timer_Tick;
@@ -47,34 +39,13 @@ namespace fourCities.ViewModels
             RefreshTime();
         }
 
-        partial void OnSelectedCityChanged(CityItemObservableProperty.CityItem? value)
-        {
-            RefreshTime();
-        }
 
         private void RefreshTime()
         {
-            if (SelectedCity == null) return;
+            string timeZone = TomlHandler.ReadTomlField("TZ3");
+            CurrentTime = TimeZoneHandler.GetTimeZoneTime(timeZone);
+            CityName = timeZone;
 
-            CurrentTime = TimeZoneHandler.RefreshTimeZone(SelectedCity.EnumsValue.ToTimeZoneInfo());
-        }
-
-        private void AddCitesToList()
-        {
-            Cities.Clear();
-
-            foreach (var item in TimeZoneHandler.OrderedEnumerableCityItems())
-            {
-                Cities.Add(item);
-            }
-        }
-
-        private void SetComboboxToDefault()
-        {
-            if (Cities.Count > 0)
-            {
-                SelectedCity = Cities[0];
-            }
         }
     }
 }

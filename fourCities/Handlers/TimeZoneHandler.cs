@@ -1,41 +1,30 @@
-﻿using fourCities.Enums;
-using fourCities.Extensions;
-using fourCities.Model;
-using static fourCities.Model.CityItemObservableProperty;
+﻿using fourCities.Model;
 
 namespace fourCities.Handlers
 {
     internal class TimeZoneHandler
     {
+        public static List<string> timeZoneCityList = new List<string>();
+
         public static string GetLocalTime()
         {
-            return CityItemObservableProperty.HomeTimeZone();
+            return TimeModel.HomeTimeZone();
         }
 
-        public static IEnumerable<CityItem> OrderedEnumerableCityItems()
+        public static string GetStoredTimeZone(string tomlField) 
         {
-            IOrderedEnumerable<CityItem>? items = Enum.GetValues<WindowsTimeZone>()
-                    .Select(zone => new CityItem
-                    {
-                        EnumsValue = zone,
-                        DisplayName = zone.ToCityName()
-                    })
-                    .OrderBy(item => item.DisplayName);
-            return items;
+            string storedTimeZone = TomlModel.ReadTOMLfields<string>(tomlField);
+            return storedTimeZone;
         }
 
-        public static string RefreshTimeZone(TimeZoneInfo targetZone)
+        public static void AddlocationsToList() 
         {
-            try
-            {
-                DateTimeOffset targetTime = TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, targetZone);
+            TimeModel.PopulateTimeZoneLocationToList(timeZoneCityList);
+        }
 
-                return targetTime.ToString("HH:mm");
-            }
-            catch (Exception)
-            {
-                return "Time Unavailable";
-            }
+        public static string GetTimeZoneTime(string timeZone) 
+        {
+            return TimeModel.GetTimeInLocation(timeZone);
         }
     }
 }

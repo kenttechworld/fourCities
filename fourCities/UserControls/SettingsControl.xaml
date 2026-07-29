@@ -16,6 +16,35 @@
                 <Label Content="Set Clock Size" FontSize="20"/>
                 <TextBox Text="{Binding ClockSize, UpdateSourceTrigger=PropertyChanged}" />
                 <Button Content="💾" Command="{Binding SetNewClockSizeCommand}" Style="{StaticResource HomeButton}"/>
+                <Label Content="Set Time Zones" FontSize="20"/>
+                <ComboBox ItemsSource="{Binding Locations}" SelectedItem="{Binding SelectedCity, Mode=TwoWay}" Style="{StaticResource ModernComboBoxStyle}" ItemContainerStyle="{StaticResource ModernComboBoxItemStyle}" FontSize="{Binding ComboboxTextSize}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,4"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Set time zone 1" Grid.Column="0" Grid.Row="0" Command="{Binding SetTimeZone1Command}" Style="{StaticResource HomeButton}" Margin="4,0,0,4"/>
+                    <Button Content="Set time zone 3" Grid.Column="0" Grid.Row="1" Command="{Binding SetTimeZone3Command}" Style="{StaticResource HomeButton}" Margin="4,0,0,4"/>
+                    <Button Content="Set time zone 2" Grid.Column="1" Grid.Row="0" Command="{Binding SetTimeZone2Command}" Style="{StaticResource HomeButton}" Margin="4,0,4,4"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="2">
+                        <Label Content="Time zone 1" FontSize="{Binding LabelSize}" Margin="4"/>
+                        <Label Content="{Binding Tz1}" FontSize="{Binding LabelSize}" Margin="4"/> 
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
+                        <Label Content="Time zone 2" FontSize="{Binding LabelSize}" Margin="4"/>
+                        <Label Content="{Binding Tz2}" FontSize="{Binding LabelSize}" Margin="4"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="3">
+                        <Label Content="Time zone 3" FontSize="{Binding LabelSize}" Margin="4"/>
+                        <Label Content="{Binding Tz3}" FontSize="{Binding LabelSize}" Margin="4"/>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
         </Border>
     </Grid>

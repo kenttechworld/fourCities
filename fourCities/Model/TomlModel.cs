@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using Tommy;
-using System.Text;
-using System.Xml;
 
 namespace fourCities.Model
 {
@@ -23,6 +18,9 @@ namespace fourCities.Model
                 ["TextSize"] = 50,
                 ["ClockLabel"] = 50,
                 ["ComboboxTextSize"] = 18,
+                ["TZ1"] = "Asia/Tokyo",
+                ["TZ2"] = "Asia/Tokyo",
+                ["TZ3"] = "Asia/Tokyo",
             };
 
             string filePath = tomlPath;
@@ -37,14 +35,14 @@ namespace fourCities.Model
             //Debug.WriteLine($"TOML file successfully created");
         }
 
-        
+
 
         public static bool CheckIfTOMLFileExist()
         {
             return Path.Exists(tomlPath);
         }
 
-        public static T ReadTOMLfiels<T>(string TOMLFieldToGetDataFrom)
+        public static T ReadTOMLfields<T>(string TOMLFieldToGetDataFrom)
         {
             if (!CheckIfTOMLFileExist())
             {
@@ -77,6 +75,24 @@ namespace fourCities.Model
         }
 
         public static void UpdateTOMLFileFieldInt(string fieldToUpdate, int newValue)
+        {
+            if (CheckIfTOMLFileExist())
+            {
+                LoadeConfigFile();
+
+                toml?[fieldToUpdate] = newValue;
+
+                // Save the changes back
+                using (StreamWriter writer = File.CreateText(tomlPath))
+                {
+                    toml?.WriteTo(writer);
+                    writer.Flush();
+                }
+
+            }
+        }
+
+        public static void UpdateTOMLFileFieldString(string fieldToUpdate, string newValue)
         {
             if (CheckIfTOMLFileExist())
             {

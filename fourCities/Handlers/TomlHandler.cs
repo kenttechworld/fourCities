@@ -1,7 +1,4 @@
 ﻿using fourCities.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace fourCities.Handlers
 {
@@ -9,31 +6,41 @@ namespace fourCities.Handlers
     {
         public static int GetLabelSize()
         {
-            int labeledSize = TomlModel.ReadTOMLfiels<int>("LableSize");
+            int labeledSize = TomlModel.ReadTOMLfields<int>("LableSize");
             return labeledSize;
         }
 
         public static int GetTextSize()
         {
-            int labeledSize = TomlModel.ReadTOMLfiels<int>("TextSize");
+            int labeledSize = TomlModel.ReadTOMLfields<int>("TextSize");
             return labeledSize;
         }
 
         public static int GetClockLabelSize()
         {
-            int labeledSize = TomlModel.ReadTOMLfiels<int>("ClockLabel");
+            int labeledSize = TomlModel.ReadTOMLfields<int>("ClockLabel");
             return labeledSize;
         }
 
         public static int GetComboboxTextSizeSize()
         {
-            int labeledSize = TomlModel.ReadTOMLfiels<int>("ComboboxTextSize");
+            int labeledSize = TomlModel.ReadTOMLfields<int>("ComboboxTextSize");
             return labeledSize;
         }
 
         public static void UpdateTomlField(string fieldToUpdate, int value)
         {
             TomlModel.UpdateTOMLFileFieldInt(fieldToUpdate, value);
+        }
+
+        public static void UpdateTomlField(string fieldToUpdate, string value)
+        {
+            TomlModel.UpdateTOMLFileFieldString(fieldToUpdate, value);
+        }
+
+        public static string ReadTomlField(string tomlFieldToRead)
+        {
+            return TomlModel.ReadTOMLfields<string>(tomlFieldToRead);
         }
     }
 }

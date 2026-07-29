@@ -10,6 +10,7 @@ namespace fourCities.Handlers
         public static void StartupChecks()
         {
             CheckConfigFile();
+            TimeZoneHandler.AddlocationsToList();
         }
 
         private static void CheckConfigFile()
